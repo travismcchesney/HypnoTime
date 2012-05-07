@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HypnosisViewController : NSObject
+@interface HypnosisViewController : UIViewController
 
 @end
