@@ -10,7 +10,10 @@
 
 @interface HypnosisView : UIView
 {
-    
+    IBOutlet UISegmentedControl *segControl;
 }
+
+- (IBAction)changeColor:(id)sender;
+
 @property (nonatomic, strong) UIColor *circleColor;
 @end

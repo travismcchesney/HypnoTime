@@ -26,6 +26,15 @@
         // All HypnosisViews start with a clear background color
         [self setBackgroundColor:[UIColor clearColor]];
         [self setCircleColor:[UIColor lightGrayColor]];
+        
+        NSArray *items = [[NSArray alloc] initWithObjects:@"Red", @"Green", @"Blue", nil];
+        segControl = [[UISegmentedControl alloc] initWithItems:items];
+        
+        [segControl addTarget:self 
+                       action:@selector(changeColor:)  
+                   forControlEvents:UIControlEventValueChanged];
+        
+        [self addSubview:segControl];
     }
     return self;
 }
@@ -45,7 +54,7 @@
 }
 
 - (void)drawRect:(CGRect)dirtyRect
-{
+{    
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     CGRect bounds = [self bounds];
     
@@ -103,6 +112,27 @@
     // Draw the string
     [text drawInRect:textRect
             withFont:font];
+}
+
+- (void)changeColor:(id)sender
+{
+    switch ([sender selectedSegmentIndex]) {
+        case 0:
+        {
+            [self setCircleColor:[UIColor redColor]];
+        } break;
+        case 1:
+        {
+            [self setCircleColor:[UIColor greenColor]];
+        } break;
+        case 2:
+        {
+            [self setCircleColor:[UIColor blueColor]];
+        } break;
+            
+        default:
+            break;
+    }
 }
 
 @end
