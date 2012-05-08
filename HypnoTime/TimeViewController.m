@@ -1,15 +1,14 @@
 //
-//  HypnosisViewController.m
+//  TimeViewController.m
 //  HypnoTime
 //
-//  Created by Travis McChesney on 5/6/12.
+//  Created by Travis McChesney on 5/7/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "HypnosisViewController.h"
-#import "HypnosisView.h"
+#import "TimeViewController.h"
 
-@implementation HypnosisViewController
+@implementation TimeViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -21,19 +20,19 @@
         UITabBarItem *tbi = [self tabBarItem];
         
         // Give it a label
-        [tbi setTitle:@"Hypnosis"];
+        [tbi setTitle:@"Time"];
     }
     
     return self;
 }
 
-- (void)loadView
+- (IBAction)showCurrentTime:(id)sender
 {
-    // Create a view
-    CGRect frame = [[UIScreen mainScreen] bounds];
-    HypnosisView *v = [[HypnosisView alloc] initWithFrame:frame];
+    NSDate *now = [NSDate date];
     
-    // Set it as *the* view of this view controller
-    [self setView:v];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setTimeStyle:NSDateFormatterMediumStyle];
+    
+    [timeLabel setText:[formatter stringFromDate:now]];
 }
 @end
