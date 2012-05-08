@@ -22,6 +22,13 @@
         
         // Give it a label
         [tbi setTitle:@"Hypnosis"];
+        
+        // Create a UIImage from a file
+        // This will use Hypno@2x.png on retina display devices
+        UIImage *i = [UIImage imageNamed:@"Hypno.png"];
+        
+        // Put that image on the tab bar item
+        [tbi setImage:i];
     }
     
     return self;
@@ -36,4 +43,13 @@
     // Set it as *the* view of this view controller
     [self setView:v];
 }
+
+- (void)viewDidLoad
+{
+    // Always call the super implementation of viewDidLoad
+    [super viewDidLoad];
+    
+    NSLog(@"HypnosisViewController loaded its view.");
+}
+
 @end
